@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLINT ARYATE BOOSTING SHOP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#050816,#0f172a,#111827);
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.12;
+background-image:
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50'%3E%3Ctext x='10' y='30' font-size='18'%3E🚀%3C/text%3E%3C/svg%3E");
+background-size:160px 160px;
+animation:floatBg 25s linear infinite;
+}
+
+@keyframes floatBg{
+0%{background-position:0 0}
+100%{background-position:0 1000px}
+}
+
+.container{
+display:flex;
+min-height:100vh;
+}
+
+.sidebar{
+width:280px;
+background:rgba(10,15,30,.92);
+padding:20px;
+position:fixed;
+height:100%;
+overflow:auto;
+border-right:1px solid #7c3aed;
+}
+
+.profile-card{
+background:linear-gradient(135deg,#312e81,#1f2937);
+padding:20px;
+border-radius:20px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.profile-card img{
+width:90px;
+height:90px;
+border-radius:50%;
+border:3px solid #f59e0b;
+}
+
+.balance-card{
+margin-top:15px;
+padding:12px;
+border-radius:12px;
+background:linear-gradient(135deg,#f59e0b,#ec4899);
+font-weight:700;
+font-size:20px;
+}
+
+.nav-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+margin-top:12px;
+background:#111827;
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.nav-btn:hover,.active{
+background:linear-gradient(135deg,#7c3aed,#ec4899);
+}
+
+.logout{
+background:#dc2626!important;
+}
+
+.main{
+margin-left:280px;
+flex:1;
+padding:25px;
+}
+
+.hero{
+background:rgba(17,24,39,.6);
+padding:30px;
+border-radius:25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:30px;
+margin-bottom:25px;
+}
+
+.hero img{
+width:350px;
+max-width:100%;
+border-radius:20px;
+}
+
+.section{
+display:none;
+}
+
+.section.active{
+display:block;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.card{
+background:#111827;
+padding:20px;
+border-radius:20px;
+border:1px solid #374151;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px rgba(236,72,153,.35);
+}
+
+.price{
+color:#4ade80;
+margin-top:10px;
+font-weight:700;
+}
+
+.order-form,.order-item,.why{
+background:#111827;
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+}
+
+input,select,textarea{
+width:100%;
+padding:14px;
+margin-top:12px;
+border:none;
+border-radius:12px;
+background:#1f2937;
+color:white;
+}
+
+.submit-btn,.admin-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+margin-top:12px;
+font-weight:700;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.submit-btn{
+background:linear-gradient(135deg,#7c3aed,#ec4899);
+}
+
+.complete{
+background:#22c55e;
+}
+
+.cancel{
+background:#dc2626;
+}
+
+.auth-screen{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop') center/cover;
+}
+
+.auth-box{
+width:420px;
+background:rgba(0,0,0,.85);
+padding:35px;
+border-radius:25px;
+}
+
+@media(max-width:900px){
+
+.sidebar{
+position:relative;
+width:100%;
+height:auto;
+}
+
+.main{
+margin-left:0;
+}
+
+.container{
+flex-direction:column;
+}
+
+.hero{
+flex-direction:column;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="auth-screen" id="authScreen">
+
+<div class="auth-box">
+
+<h1 style="text-align:center;margin-bottom:20px;">
+🚀 CLINT ARYATE BOOSTING SHOP
+</h1>
+
+<input type="text" id="signupUsername" placeholder="Create Username">
+
+<input type="password" id="signupPassword" placeholder="Create Password">
+
+<button class="submit-btn" onclick="signup()">
+✨ Sign Up
+</button>
+
+<hr style="margin:25px 0;border-color:#374151">
+
+<input type="text" id="loginUsername" placeholder="Username">
+
+<input type="password" id="loginPassword" placeholder="Password">
+
+<button class="submit-btn" onclick="login()">
+🔐 Login
+</button>
+
+<div class="why">
+
+<h2>🌟 Why Choose Us?</h2>
+
+<p>✅ Fast Delivery</p>
+<p>✅ Real Active Services</p>
+<p>✅ Trusted Filipino Shop</p>
+<p>✅ Affordable Prices</p>
+<p>✅ Instant Order Processing</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="container" id="dashboard" style="display:none;">
+
+<div class="sidebar">
+
+<div class="profile-card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+<h2 id="profileName">User</h2>
+
+<div class="balance-card">
+₱ <span id="profileBalance">0</span>
+</div>
+
+</div>
+
+<button class="nav-btn active" onclick="showSection('newOrder',this)">
+🛒 New Order
+</button>
+
+<button class="nav-btn" onclick="showSection('orderHistory',this)">
+🕒 Order History
+</button>
+
+<button class="nav-btn" onclick="showSection('completedOrders',this)">
+✅ Completed Orders
+</button>
+
+<button class="nav-btn" onclick="showSection('addFunds',this)">
+💰 Add Funds
+</button>
+
+<button class="nav-btn logout" onclick="logout()">
+🚪 Logout
+</button>
+
+</div>
+
+<div class="main">
+
+<div class="hero">
+
+<div>
+
+<h1>📈 Grow Your Social Media Fast</h1>
+
+<p style="margin-top:10px;color:#d1d5db;line-height:1.7;">
+Boost your Facebook, Instagram and TikTok accounts with trusted Filipino services.
+</p>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div id="newOrder" class="section active">
+
+<h1>🛒 Create New Order</h1>
+
+<div class="grid">
+
+<div class="card"><h3>📘 Facebook Followers</h3><p class="price">₱50 / 1K</p></div>
+
+<div class="card"><h3>👍 ❤️ 😂 😢 😡 FB Reactions</h3><p class="price">₱40 / 1K</p></div>
+
+<div class="card"><h3>👻 Facebook Reactions Hidden Users</h3><p class="price">₱30 / 1K</p></div>
+
+<div class="card"><h3>👤 Hidden FB Followers</h3><p class="price">₱30 / 1K</p></div>
+
+<div class="card"><h3>📤 Facebook Shares</h3><p class="price">₱40 / 1K</p></div>
+
+<div class="card"><h3>🇵🇭 FB Comments Pure PH Account</h3><p class="price">₱1 Per Comment</p></div>
+
+<div class="card"><h3>📸 Instagram Followers</h3><p class="price">₱50 / 1K</p></div>
+
+<div class="card"><h3>❤️ Instagram Likes</h3><p class="price">₱40 / 1K</p></div>
+
+<div class="card"><h3>🎵 TikTok Views</h3><p class="price">₱30 / 1K</p></div>
+
+<div class="card"><h3>❤️ TikTok Likes</h3><p class="price">₱40 / 1K</p></div>
+
+<div class="card"><h3>🔁 TikTok Shares</h3><p class="price">₱30 / 1K</p></div>
+
+<div class="card"><h3>💬 TikTok Random Comments</h3><p class="price">₱20 / 50</p></div>
+
+</div>
+
+<div class="order-form">
+
+<select id="service">
+
+<option>📘 Facebook Followers - ₱50 / 1K</option>
+
+<option>👍 Facebook Reactions - ₱40 / 1K</option>
+<option>❤️ Facebook Reactions - ₱40 / 1K</option>
+<option>🤗 Facebook Reactions - ₱40 / 1K</option>
+<option>😢 Facebook Reactions - ₱40 / 1K</option>
+<option>😂 Facebook Reactions - ₱40 / 1K</option>
+<option>😡 Facebook Reactions - ₱40 / 1K</option>
+
+<option>👻 Facebook Reactions Hidden Users - ₱30 / 1K</option>
+<option>👤 Hidden FB Followers - ₱30 / 1K</option>
+
+<option>📤 Facebook Shares - ₱40 / 1K</option>
+
+<option>🇵🇭 FB Comments Pure PH Account - ₱1 Per Comment</option>
+
+<option>📸 Instagram Followers - ₱50 / 1K</option>
+<option>❤️ Instagram Likes - ₱40 / 1K</option>
+
+<option>🎵 TikTok Views - ₱30 / 1K</option>
+<option>❤️ TikTok Likes - ₱40 / 1K</option>
+<option>🔁 TikTok Shares - ₱30 / 1K</option>
+<option>💬 TikTok Random Comments - ₱20 / 50</option>
+
+</select>
+
+<input type="text" id="orderLink" placeholder="Paste Link">
+
+<textarea id="additionalInfo" placeholder="Additional Information"></textarea>
+
+<input type="number" id="orderAmount" placeholder="Enter Amount">
+
+<div class="why">
+
+<h2>💳 How To Add Funds</h2>
+
+<p>1. Open your GCash</p>
+<p>2. Send the exact amount</p>
+<p>3. Screenshot your payment</p>
+<p>4. Submit proof</p>
+
+<br>
+
+<p>⛦ Send payment to:</p>
+<p>Number: 09686353373</p>
+<p>Name: DE..A.A</p>
+
+</div>
+
+<button class="submit-btn" onclick="createOrder()">
+🚀 Submit Order
+</button>
+
+</div>
+
+</div>
+
+<div id="orderHistory" class="section">
+
+<h1>🕒 My Order History</h1>
+
+<div id="historyContainer"></div>
+
+</div>
+
+<div id="completedOrders" class="section">
+
+<h1>🌍 Public Completed Orders</h1>
+
+<div class="order-form">
+
+<input type="text"
+id="searchOrder"
+placeholder="🔎 Search Order ID"
+onkeyup="loadCompleted()">
+
+</div>
+
+<div id="completedContainer"></div>
+
+</div>
+
+<div id="addFunds" class="section">
+
+<h1>💰 Add Funds</h1>
+
+<div class="order-form">
+<p>Send payment first then message admin.</p>
+</div>
+
+<div id="adminPanel" style="display:none;">
+
+<div class="order-form">
+
+<h2>🛠️ Owner Admin Panel</h2>
+
+<input type="text"
+id="fundUsername"
+placeholder="Customer Username">
+
+<input type="number"
+id="fundAmount"
+placeholder="Funds Amount">
+
+<button class="submit-btn" onclick="addFunds()">
+💰 Add Funds
+</button>
+
+<h2 style="margin-top:25px;">
+📦 Customer Orders
+</h2>
+
+<div id="adminOrders"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+let completedOrders = JSON.parse(localStorage.getItem('completedOrders')) || [];
+
+let cancelledOrders = JSON.parse(localStorage.getItem('cancelledOrders')) || [];
+
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+
+function save(){
+
+localStorage.setItem('users',JSON.stringify(users));
+
+localStorage.setItem('orders',JSON.stringify(orders));
+
+localStorage.setItem('completedOrders',JSON.stringify(completedOrders));
+
+localStorage.setItem('cancelledOrders',JSON.stringify(cancelledOrders));
+
+localStorage.setItem('currentUser',JSON.stringify(currentUser));
+
+}
+
+function signup(){
+
+const username = document.getElementById('signupUsername').value.trim();
+
+const password = document.getElementById('signupPassword').value.trim();
+
+if(!username || !password){
+return alert('Complete all fields');
+}
+
+if(users.find(u=>u.username===username)){
+return alert('Username already taken');
+}
+
+users.push({
+username,
+password,
+balance:0,
+spent:0
+});
+
+save();
+
+alert('Account Created Successfully');
+
+}
+
+function login(){
+
+const username = document.getElementById('loginUsername').value.trim();
+
+const password = document.getElementById('loginPassword').value.trim();
+
+if(username === 'clint aryate' && password === 'roland99200'){
+
+currentUser = {
+username:'clint aryate',
+balance:'Unlimited',
+spent:0,
+isAdmin:true
+};
+
+save();
+
+loadDashboard();
+
+return;
+
+}
+
+const user = users.find(
+u=>u.username===username && u.password===password
+);
+
+if(!user){
+return alert('Invalid Login');
+}
+
+currentUser = user;
+
+save();
+
+loadDashboard();
+
+}
+
+function loadDashboard(){
+
+document.getElementById('authScreen').style.display='none';
+
+document.getElementById('dashboard').style.display='flex';
+
+document.getElementById('profileName').innerText=currentUser.username;
+
+document.getElementById('profileBalance').innerText=currentUser.balance;
+
+loadHistory();
+
+loadCompleted();
+
+if(currentUser.isAdmin){
+
+document.getElementById('adminPanel').style.display='block';
+
+loadAdminOrders();
+
+}
+
+}
+
+function createOrder(){
+
+const service=document.getElementById('service').value;
+
+const link=document.getElementById('orderLink').value;
+
+const additionalInfo=document.getElementById('additionalInfo').value;
+
+const amount=document.getElementById('orderAmount').value;
+
+if(!service || !link || !amount){
+return alert('Complete all fields');
+}
+
+let orderId;
+
+do{
+
+orderId=Math.floor(1000+Math.random()*9000);
+
+}while(
+orders.some(o=>o.id===orderId) ||
+completedOrders.some(o=>o.id===orderId)
+);
+
+orders.unshift({
+
+id:orderId,
+
+username:currentUser.username,
+
+service,
+
+link,
+
+additionalInfo,
+
+amount,
+
+status:'Pending',
+
+date:new Date().toLocaleString()
+
+});
+
+if(!currentUser.isAdmin){
+
+currentUser.balance -= parseInt(amount);
+
+currentUser.spent += parseInt(amount);
+
+users = users.map(
+u=>u.username===currentUser.username ? currentUser : u
+);
+
+}
+
+save();
+
+alert('Order Submitted! ID: #'+orderId);
+
+location.reload();
+
+}
+
+function loadHistory(){
+
+const container=document.getElementById('historyContainer');
+
+container.innerHTML='';
+
+orders
+.filter(o=>o.username===currentUser.username)
+.forEach(order=>{
+
+container.innerHTML+=`
+
+<div class="order-item">
+
+<h3>${order.service}</h3>
+
+<p>🆔 ID: #${order.id}</p>
+
+<p>📅 ${order.date}</p>
+
+<p>💵 ₱${order.amount}</p>
+
+<p>📌 ${order.status}</p>
+
+</div>
+
+`;
+
+});
+
+completedOrders
+.filter(o=>o.username===currentUser.username)
+.forEach(order=>{
+
+container.innerHTML+=`
+
+<div class="order-item">
+
+<h3>✅ ${order.service}</h3>
+
+<p>🆔 ID: #${order.id}</p>
+
+<p>📅 ${order.date}</p>
+
+<p>💵 ₱${order.amount}</p>
+
+<p>📌 Completed</p>
+
+</div>
+
+`;
+
+});
+
+cancelledOrders
+.filter(o=>o.username===currentUser.username)
+.forEach(order=>{
+
+container.innerHTML+=`
+
+<div class="order-item">
+
+<h3>❌ ${order.service}</h3>
+
+<p>🆔 ID: #${order.id}</p>
+
+<p>📅 ${order.date}</p>
+
+<p>💵 ₱${order.amount}</p>
+
+<p style="color:#ef4444;">📌 Cancelled</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+function loadCompleted(){
+
+const container=document.getElementById('completedContainer');
+
+container.innerHTML='';
+
+const searchInput=document.getElementById('searchOrder');
+
+const searchValue=searchInput.value.trim();
+
+let filteredOrders=completedOrders;
+
+if(searchValue!==''){
+
+filteredOrders=completedOrders.filter(order=>
+
+String(order.id).includes(searchValue)
+
+);
+
+}
+
+if(filteredOrders.length===0){
+
+container.innerHTML=`
+
+<div class="order-item">
+<h3>❌ No Order Found</h3>
+</div>
+
+`;
+
+return;
+
+}
+
+filteredOrders.forEach((order,index)=>{
+
+container.innerHTML+=`
+
+<div class="order-item">
+
+<h3>✅ ${order.service}</h3>
+
+<p>👤 ${order.username}</p>
+
+<p>🆔 ID: #${order.id}</p>
+
+<p>📅 ${order.date}</p>
+
+<p>💵 ₱${order.amount}</p>
+
+${currentUser && currentUser.isAdmin
+? `<button class="admin-btn complete" onclick="refillOrder(${index})">♻️ Refill</button>`
+: ''}
+
+</div>
+
+`;
+
+});
+
+}
+
+function addFunds(){
+
+const username=document.getElementById('fundUsername').value.trim();
+
+const amount=parseInt(document.getElementById('fundAmount').value);
+
+const user=users.find(u=>u.username===username);
+
+if(!user){
+return alert('User Not Found');
+}
+
+user.balance += amount;
+
+save();
+
+alert('Funds Added Successfully');
+
+}
+
+function loadAdminOrders(){
+
+const container=document.getElementById('adminOrders');
+
+container.innerHTML='';
+
+orders.forEach((order,index)=>{
+
+container.innerHTML+=`
+
+<div class="order-item">
+
+<h3>👤 ${order.username}</h3>
+
+<p>🆔 ID: #${order.id}</p>
+
+<p>📦 ${order.service}</p>
+
+<p>💵 ₱${order.amount}</p>
+
+<p>📌 ${order.status}</p>
+
+<button class="admin-btn complete"
+onclick="completeOrder(${index})">
+
+✅ Complete
+
+</button>
+
+<button class="admin-btn cancel"
+onclick="cancelOrder(${index})">
+
+❌ Cancel
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function completeOrder(index){
+
+const completed=orders[index];
+
+completed.status='Completed';
+
+completedOrders.unshift(completed);
+
+orders.splice(index,1);
+
+save();
+
+loadAdminOrders();
+
+loadCompleted();
+
+loadHistory();
+
+alert('Order Completed');
+
+}
+
+function cancelOrder(index){
+
+const cancelled=orders[index];
+
+cancelled.status='Cancelled';
+
+cancelledOrders.unshift(cancelled);
+
+const user=users.find(u=>u.username===cancelled.username);
+
+if(user){
+
+user.balance += parseInt(cancelled.amount);
+
+}
+
+orders.splice(index,1);
+
+save();
+
+loadAdminOrders();
+
+loadHistory();
+
+alert('Order Cancelled');
+
+}
+
+function refillOrder(index){
+
+const order=completedOrders[index];
+
+const user=users.find(u=>u.username===order.username);
+
+if(user){
+
+user.balance += parseInt(order.amount);
+
+save();
+
+alert('Refill Successful');
+
+}
+
+}
+
+function logout(){
+
+currentUser=null;
+
+localStorage.removeItem('currentUser');
+
+location.reload();
+
+}
+
+function showSection(id,btn){
+
+document.querySelectorAll('.section')
+.forEach(s=>s.classList.remove('active'));
+
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('.nav-btn')
+.forEach(b=>b.classList.remove('active'));
+
+btn.classList.add('active');
+
+}
+
+if(currentUser){
+
+loadDashboard();
+
+}
+
+</script>
+
+</body>
+</html>
