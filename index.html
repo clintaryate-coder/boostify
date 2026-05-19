@@ -344,25 +344,25 @@ Boost your Facebook, Instagram and TikTok accounts with trusted Filipino service
 
 <div class="grid">
 
-<div class="card"><h3>📘 Facebook Followers</h3><p class="price">₱50 / 1K</p></div>
+<div class="card"><h3>📘 Facebook Followers World Wide nondrop</h3><p class="price">₱35 / 1K</p></div>
 
-<div class="card"><h3>👍 ❤️ 😂 😢 😡 FB Reactions</h3><p class="price">₱40 / 1K</p></div>
+<div class="card"><h3>👍 ❤️ 😂 😢 😡 FB Reactions World Wide lowdrop</h3><p class="price">₱30 / 1K</p></div>
 
-<div class="card"><h3>👻 Facebook Reactions Hidden Users</h3><p class="price">₱30 / 1K</p></div>
+<div class="card"><h3>👻 Facebook Reactions Hidden Users low drop</h3><p class="price">₱30 / 1K</p></div>
 
 <div class="card"><h3>👤 Hidden FB Followers</h3><p class="price">₱30 / 1K</p></div>
 
-<div class="card"><h3>📤 Facebook Shares</h3><p class="price">₱40 / 1K</p></div>
+<div class="card"><h3>📤 Facebook Shares</h3><p class="price">₱35 / 1K</p></div>
 
-<div class="card"><h3>🇵🇭 FB Comments Pure PH Account</h3><p class="price">₱1 Per Comment</p></div>
+<div class="card"><h3>📘 FB Comments Custom Wordwide Account nondrop</h3><p class="price">₱30 / 1k</p></div>
 
-<div class="card"><h3>📸 Instagram Followers</h3><p class="price">₱50 / 1K</p></div>
+<div class="card"><h3>📸 Instagram Followers lowdrop</h3><p class="price">₱35 / 1K</p></div>
 
-<div class="card"><h3>❤️ Instagram Likes</h3><p class="price">₱40 / 1K</p></div>
+<div class="card"><h3>❤️ Instagram Likes lowdrop</h3><p class="price">₱30 / 1K</p></div>
 
-<div class="card"><h3>🎵 TikTok Views</h3><p class="price">₱30 / 1K</p></div>
+<div class="card"><h3>🎵 TikTok Views</h3><p class="price">₱25 / 1K</p></div>
 
-<div class="card"><h3>❤️ TikTok Likes</h3><p class="price">₱40 / 1K</p></div>
+<div class="card"><h3>❤️ TikTok Likes nondrop</h3><p class="price">₱35 / 1K</p></div>
 
 <div class="card"><h3>🔁 TikTok Shares</h3><p class="price">₱30 / 1K</p></div>
 
@@ -372,29 +372,29 @@ Boost your Facebook, Instagram and TikTok accounts with trusted Filipino service
 
 <div class="order-form">
 
-<select id="service">
+<select id="service" onchange="calculatePrice()">
 
-<option>📘 Facebook Followers - ₱50 / 1K</option>
+<option>📘 Facebook Followers nondrop - ₱35 / 1K</option>
 
-<option>👍 Facebook Reactions - ₱40 / 1K</option>
-<option>❤️ Facebook Reactions - ₱40 / 1K</option>
-<option>🤗 Facebook Reactions - ₱40 / 1K</option>
-<option>😢 Facebook Reactions - ₱40 / 1K</option>
-<option>😂 Facebook Reactions - ₱40 / 1K</option>
-<option>😡 Facebook Reactions - ₱40 / 1K</option>
+<option>👍 Facebook Reactions - ₱30 / 1K</option>
+<option>❤️ Facebook Reactions - ₱30 / 1K</option>
+<option>🤗 Facebook Reactions - ₱30 / 1K</option>
+<option>😢 Facebook Reactions - ₱30 / 1K</option>
+<option>😂 Facebook Reactions - ₱30 / 1K</option>
+<option>😡 Facebook Reactions - ₱30 / 1K</option>
 
 <option>👻 Facebook Reactions Hidden Users - ₱30 / 1K</option>
 <option>👤 Hidden FB Followers - ₱30 / 1K</option>
 
-<option>📤 Facebook Shares - ₱40 / 1K</option>
+<option>📤 Facebook Shares - ₱35 / 1K</option>
 
-<option>🇵🇭 FB Comments Pure PH Account - ₱1 Per Comment</option>
+<option>📘 FB Comments Custom Worldwide Account nondrop - ₱30 / 1k</option>
 
-<option>📸 Instagram Followers - ₱50 / 1K</option>
-<option>❤️ Instagram Likes - ₱40 / 1K</option>
+<option>📸 Instagram Followers - ₱35 / 1K</option>
+<option>❤️ Instagram Likes - ₱30 / 1K</option>
 
-<option>🎵 TikTok Views - ₱30 / 1K</option>
-<option>❤️ TikTok Likes - ₱40 / 1K</option>
+<option>🎵 TikTok Views - ₱25 / 1K</option>
+<option>❤️ TikTok Likes - ₱35 / 1K</option>
 <option>🔁 TikTok Shares - ₱30 / 1K</option>
 <option>💬 TikTok Random Comments - ₱20 / 50</option>
 
@@ -404,7 +404,15 @@ Boost your Facebook, Instagram and TikTok accounts with trusted Filipino service
 
 <textarea id="additionalInfo" placeholder="Additional Information"></textarea>
 
-<input type="number" id="orderAmount" placeholder="Enter Amount">
+<input type="number"
+id="orderAmount"
+placeholder="Quantity"
+oninput="calculatePrice()">
+
+<input type="text"
+id="calculatedPrice"
+placeholder="Charge"
+readonly>
 
 <div class="why">
 
@@ -557,10 +565,13 @@ const username = document.getElementById('loginUsername').value.trim();
 
 const password = document.getElementById('loginPassword').value.trim();
 
-if(username === 'clint aryate' && password === 'roland99200'){
+if(
+(username === 'clint aryate' && password === 'roland99200') ||
+(username === 'fetty' && password === 'roland9920')
+){
 
 currentUser = {
-username:'clint aryate',
+username: username,
 balance:'Unlimited',
 spent:0,
 isAdmin:true
@@ -622,7 +633,10 @@ const link=document.getElementById('orderLink').value;
 
 const additionalInfo=document.getElementById('additionalInfo').value;
 
-const amount=document.getElementById('orderAmount').value;
+const amount=parseFloat(
+document.getElementById('calculatedPrice')
+.value.replace('₱','')
+);
 
 if(!service || !link || !amount){
 return alert('Complete all fields');
@@ -653,17 +667,17 @@ additionalInfo,
 
 amount,
 
-status:'Pending',
-
-date:new Date().toLocaleString()
+status: 'Pending',
+date: new Date().toLocaleString(),
+createdAt: Date.now()
 
 });
 
 if(!currentUser.isAdmin){
 
-currentUser.balance -= parseInt(amount);
+currentUser.balance -= parseFloat(amount);
 
-currentUser.spent += parseInt(amount);
+currentUser.spent += parseFloat(amount);
 
 users = users.map(
 u=>u.username===currentUser.username ? currentUser : u
@@ -689,6 +703,8 @@ orders
 .filter(o=>o.username===currentUser.username)
 .forEach(order=>{
 
+const pendingMinutes = Math.floor((Date.now() - order.createdAt) / 60000);
+
 container.innerHTML+=`
 
 <div class="order-item">
@@ -701,7 +717,15 @@ container.innerHTML+=`
 
 <p>💵 ₱${order.amount}</p>
 
-<p>📌 ${order.status}</p>
+<p>🔗 ${order.link ? order.link : 'No link provided'}</p>
+
+<p>⏳ Pending: ${pendingMinutes} min</p>
+
+<p>📌 ${
+  order.status === 'Auto-Refunded'
+    ? '⏰ Auto-Refunded (2h limit reached)'
+    : order.status
+}</p>
 
 </div>
 
@@ -710,10 +734,10 @@ container.innerHTML+=`
 });
 
 completedOrders
-.filter(o=>o.username===currentUser.username)
-.forEach(order=>{
+.filter(o => o.username === currentUser.username)
+.forEach(order => {
 
-container.innerHTML+=`
+container.innerHTML += `
 
 <div class="order-item">
 
@@ -725,7 +749,7 @@ container.innerHTML+=`
 
 <p>💵 ₱${order.amount}</p>
 
-<p>📌 Completed</p>
+<p>📌 ${order.status}</p>
 
 </div>
 
@@ -845,11 +869,12 @@ alert('Funds Added Successfully');
 
 function loadAdminOrders(){
 
-const container=document.getElementById('adminOrders');
-
+const container = document.getElementById('adminOrders');
 container.innerHTML='';
 
-orders.forEach((order,index)=>{
+orders.forEach((order, index) => {
+
+const pendingMinutes = Math.floor((Date.now() - order.createdAt) / 60000);
 
 container.innerHTML+=`
 
@@ -861,22 +886,20 @@ container.innerHTML+=`
 
 <p>📦 ${order.service}</p>
 
+<p>🔗 Link: ${order.link ? order.link : 'No link provided'}</p>
+
 <p>💵 ₱${order.amount}</p>
 
 <p>📌 ${order.status}</p>
 
-<button class="admin-btn complete"
-onclick="completeOrder(${index})">
+<p>⏳ Pending: ${pendingMinutes} min</p>
 
+<button class="admin-btn complete" onclick="completeOrder(${index})">
 ✅ Complete
-
 </button>
 
-<button class="admin-btn cancel"
-onclick="cancelOrder(${index})">
-
+<button class="admin-btn cancel" onclick="cancelOrder(${index})">
 ❌ Cancel
-
 </button>
 
 </div>
@@ -955,6 +978,36 @@ alert('Refill Successful');
 
 }
 
+function calculatePrice(){
+
+const service = document.getElementById('service').value;
+const quantity = parseInt(document.getElementById('orderAmount').value) || 0;
+
+let rate = 0;
+
+if(service.includes('₱35 / 1K')){
+rate = 35 / 1000;
+}
+
+else if(service.includes('₱30 / 1K')){
+rate = 30 / 1000;
+}
+
+else if(service.includes('₱20 / 50')){
+rate = 20 / 50;
+}
+
+else if(service.includes('₱1 Per Comment')){
+rate = 1;
+}
+
+const total = quantity * rate;
+
+document.getElementById('calculatedPrice').value =
+'₱ ' + total.toFixed(2);
+
+}
+
 function logout(){
 
 currentUser=null;
@@ -979,9 +1032,47 @@ btn.classList.add('active');
 
 }
 
-if(currentUser){
+setInterval(autoRefundCheck, 30000);
 
-loadDashboard();
+function autoRefundCheck() {
+
+    const now = Date.now();
+    const TWO_HOURS = 2 * 60 * 60 * 1000;
+
+    for (let i = orders.length - 1; i >= 0; i--) {
+
+        const order = orders[i];
+
+        if (order.status === 'Pending' && order.createdAt) {
+
+            if (now - order.createdAt >= TWO_HOURS) {
+
+                const user = users.find(u => u.username === order.username);
+
+                if (user) {
+                    user.balance += parseInt(order.amount);
+                }
+
+                order.status = 'Auto-Refunded';
+                completedOrders.unshift(order);
+                orders.splice(i, 1);
+
+                save();
+            }
+        }
+    }
+
+    loadAdminOrders();
+    loadHistory();
+    loadCompleted();
+}
+
+setInterval(() => {
+  loadAdminOrders();
+}, 60000);
+
+if(currentUser){
+  loadDashboard();
 
 }
 
